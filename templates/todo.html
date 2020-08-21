@@ -1,0 +1,31 @@
+<h1>
+      TODO APP
+</h1>
+
+<!--<ul>
+            <li>
+                  List Item 1
+            </li>
+            <li>
+                  List Item 2
+            </li>
+</ul>-->
+<h2>
+<ul>
+      {% for i in all_items %}
+      <li>{{ i.content }}
+            <form action="/deletetodo/{{i.id}}/", method="POST", style="display:inline-table">
+                  {% csrf_token %} <!-- just for security purpose-->
+                  <input type="submit" value="Delete">
+            </form>
+      </li>
+      {% endfor %}
+</ul>
+
+<form action="/addtodo/", method="POST">
+      {% csrf_token %} <!-- just for security purpose-->
+      <input type="text" name="content" >
+      <input type="submit" value="Add To List">
+</form>
+
+</h2>
